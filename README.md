@@ -90,6 +90,9 @@ yo eslint:rule
 
 Note: we do not use the generated documentation files.
 
+For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md)
+file.
+
 
 ## License
 
