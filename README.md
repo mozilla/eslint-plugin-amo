@@ -1,6 +1,11 @@
-# eslint-plugin-amo
+eslint-plugin-amo
+=================
 
-ESLint plugin for AMO.
+[![Build
+Status](https://travis-ci.org/willdurand/eslint-plugin-amo.svg?branch=master)](https://travis-ci.org/willdurand/eslint-plugin-amo)
+
+ESLint plugin for [AMO](https://wiki.mozilla.org/AMO).
+
 
 ## Installation
 
@@ -18,6 +23,7 @@ $ npm install eslint-plugin-amo --save-dev
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must
 also install `eslint-plugin-amo` globally.
+
 
 ## Usage
 
@@ -42,3 +48,50 @@ Then configure the rules you want to use under the rules section.
     }
 }
 ```
+
+
+## Rules
+
+### `i18n-no-tagged-templates`
+
+Ensure no template literal tags are passed to i18n methods:
+
+```js
+// BAD
+i18n.gettext(oneLine`Hello,
+world`);
+
+// GOOD
+i18n.gettext(`Hello,
+world`);
+```
+
+
+## Contributing
+
+Install the project dependencies:
+
+```
+npm install
+```
+
+Run the test suite:
+
+```
+npm test
+```
+
+New rules can be added with the [ESLint generator for
+Yeoman](https://github.com/eslint/generator-eslint):
+
+```
+yo eslint:rule
+```
+
+Note: we do not use the generated documentation files.
+
+
+## License
+
+eslint-plugin-amo is released under the Mozilla Public License Version 2.0. See
+the bundled [LICENSE](./LICENSE.txt) file for details.
