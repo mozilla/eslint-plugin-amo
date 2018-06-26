@@ -32,9 +32,9 @@ omit the `eslint-plugin-` prefix:
 
 ```json
 {
-    "plugins": [
-        "amo"
-    ]
+  "plugins": [
+    "amo"
+  ]
 }
 ```
 
@@ -43,9 +43,19 @@ Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "amo/rule-name": 2
-    }
+  "rules": {
+    "amo/rule-name": 2
+  }
+}
+```
+
+Alternatively, you can use the `recommended` preset to get reasonable defaults:
+
+```json
+{
+  "extends": [
+    "plugin:amo/recommended"
+  ]
 }
 ```
 
