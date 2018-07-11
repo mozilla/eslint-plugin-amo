@@ -76,6 +76,20 @@ i18n.gettext(`Hello,
 world`);
 ```
 
+This rule is _fixable_ (it removes the tag when using `eslint --fix`).
+
+### `redux-app-state`
+
+Ensure the `AppState` Flow type is used on `state` arguments:
+
+```js
+// BAD
+const mapStateToProps = (state: {| user: UserState |}) => {};
+
+// GOOD
+const mapStateToProps = (state: AppState) => {};
+```
+
 
 ## Contributing
 
