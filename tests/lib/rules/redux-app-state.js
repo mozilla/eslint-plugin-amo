@@ -9,9 +9,11 @@ const ruleTester = new RuleTester({
 
 const invalidExample = (code) => ({
   code,
-  errors: [{
-    messageId: 'invalidStateType',
-  }],
+  errors: [
+    {
+      messageId: 'invalidStateType',
+    },
+  ],
 });
 
 ruleTester.run('redux-app-state', rule, {

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const rule = require("../../../lib/rules/i18n-no-tagged-templates");
-const RuleTester = require("eslint").RuleTester;
+const rule = require('../../../lib/rules/i18n-no-tagged-templates');
+const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
   parserOptions: {
@@ -14,25 +14,27 @@ const ruleTester = new RuleTester({
 
 const invalidExample = (code) => ({
   code,
-  errors: [{
-    messageId: 'noTemplateLiteralTags',
-    data: {
-      tag: 'tag',
+  errors: [
+    {
+      messageId: 'noTemplateLiteralTags',
+      data: {
+        tag: 'tag',
+      },
     },
-  }],
+  ],
 });
 
-ruleTester.run("i18n-no-tagged-templates", rule, {
+ruleTester.run('i18n-no-tagged-templates', rule, {
   valid: [
     "i18n.gettext('hello')",
     'i18n.gettext(`hello`)',
     'i18n.gettext(`hello\n\nworld`)',
     'i18n.dgettext(tag`domain`, `some content`)',
     "i18n.ngettext('singular', `plural`)",
-    "<p>{i18n.gettext(`plural`)}</p>",
+    '<p>{i18n.gettext(`plural`)}</p>',
   ],
   invalid: [
-    invalidExample("i18n.gettext(tag`translated string`)"),
+    invalidExample('i18n.gettext(tag`translated string`)'),
     invalidExample("i18n.dgettext('domain', tag`translated string`)"),
     invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
     invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
@@ -65,5 +67,5 @@ ruleTester.run("i18n-no-tagged-templates", rule, {
       ],
       output: '<p>{i18n.ngettext(`singular`, `plural`)}</p>',
     },
-  ]
+  ],
 });

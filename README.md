@@ -1,11 +1,9 @@
-eslint-plugin-amo
-=================
+# eslint-plugin-amo
 
 [![Build
 Status](https://travis-ci.org/willdurand/eslint-plugin-amo.svg?branch=master)](https://travis-ci.org/willdurand/eslint-plugin-amo)
 
 ESLint plugin for [AMO](https://wiki.mozilla.org/AMO).
-
 
 ## Installation
 
@@ -21,23 +19,17 @@ Next, install `eslint-plugin-amo`:
 $ npm install eslint-plugin-amo --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must
-also install `eslint-plugin-amo` globally.
-
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-amo` globally.
 
 ## Usage
 
-Add `amo` to the plugins section of your `.eslintrc` configuration file. You can
-omit the `eslint-plugin-` prefix:
+Add `amo` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-  "plugins": [
-    "amo"
-  ]
+  "plugins": ["amo"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
@@ -53,12 +45,9 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 
 ```json
 {
-  "extends": [
-    "plugin:amo/recommended"
-  ]
+  "extends": ["plugin:amo/recommended"]
 }
 ```
-
 
 ## Rules
 
@@ -90,7 +79,6 @@ const mapStateToProps = (state: {| user: UserState |}) => {};
 const mapStateToProps = (state: AppState) => {};
 ```
 
-
 ## Contributing
 
 Install the project dependencies:
@@ -105,8 +93,7 @@ Run the test suite:
 npm test
 ```
 
-New rules can be added with the [ESLint generator for
-Yeoman](https://github.com/eslint/generator-eslint):
+New rules can be added with the [ESLint generator for Yeoman](https://github.com/eslint/generator-eslint):
 
 ```
 yo eslint:rule
@@ -114,11 +101,8 @@ yo eslint:rule
 
 Note: we do not use the generated documentation files.
 
-For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md)
-file.
-
+For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 ## License
 
-eslint-plugin-amo is released under the Mozilla Public License Version 2.0. See
-the bundled [LICENSE](./LICENSE.txt) file for details.
+eslint-plugin-amo is released under the Mozilla Public License Version 2.0. See the bundled [LICENSE](./LICENSE.txt) file for details.
