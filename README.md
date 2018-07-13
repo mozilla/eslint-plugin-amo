@@ -51,6 +51,18 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 
 ## Rules
 
+### `dangerously-set-inner-html`
+
+Ensure `dangerouslySetInnerHTML` is used on elements that permit flow content:
+
+```js
+// BAD
+<p dangerouslySetInnerHTML={sanitizeUserHTML(content)} />
+
+// GOOD
+<div dangerouslySetInnerHTML={sanitizeUserHTML(content)} />
+```
+
 ### `i18n-no-tagged-templates`
 
 Ensure no template literal tags are passed to i18n methods:

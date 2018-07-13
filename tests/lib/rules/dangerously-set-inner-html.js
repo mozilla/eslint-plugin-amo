@@ -16,7 +16,7 @@ const invalidExample = (code, element) => ({
   code,
   errors: [
     {
-      messageId: 'invalidElement',
+      messageId: 'invalidElementForSanitizeUserHTML',
       data: {
         element,
       },
@@ -26,14 +26,15 @@ const invalidExample = (code, element) => ({
 
 ruleTester.run('dangerously-set-inner-html', rule, {
   valid: [
-    '<div dangerouslySetInnerHTML={{__html: "some html"}} />',
     '<div />',
+    '<div dangerouslySetInnerHTML={sanitizeUserHTML(content)} />',
+    '<div dangerouslySetInnerHTML={{__html: "some html"}} />',
     '<div foo="bar" />',
   ],
 
   invalid: [
     invalidExample(
-      '<p dangerouslySetInnerHTML={{__html: "some html"}} />',
+      '<p dangerouslySetInnerHTML={sanitizeUserHTML(content)} />',
       'p'
     ),
   ],
