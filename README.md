@@ -63,6 +63,24 @@ Ensure `dangerouslySetInnerHTML` is used on elements that permit flow content:
 <div dangerouslySetInnerHTML={sanitizeUserHTML(content)} />
 ```
 
+### `describe-with-filename`
+
+Ensure the top-level `describe` block has `__filename` as description in a test file:
+
+```js
+// BAD
+describe('<Component />', () => {
+  // ...
+});
+
+// GOOD
+describe(__filename, () => {
+  // ...
+});
+```
+
+This rule is _fixable_ (it changes the description when using `eslint --fix`).
+
 ### `i18n-no-tagged-templates`
 
 Ensure no template literal tags are passed to i18n methods:
