@@ -51,7 +51,8 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 
 ## Rules
 
-<!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
+<!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run doc` -->
+
 <!--DOC_START-->
 
 ### `dangerously-set-inner-html`
