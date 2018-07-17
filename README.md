@@ -98,6 +98,22 @@ world`);
 
 This rule is _fixable_ (it removes the tag when using `eslint --fix`).
 
+### `one-top-level-describe-per-test`
+
+Ensure there is a single top-level `describe` block per test file:
+
+```js
+// BAD
+"describe(__filename, () => {
+  describe('foo', () => {});
+  describe('bar', () => {});
+});
+
+// GOOD
+describe('foo', () => {});
+describe('bar', () => {});
+```
+
 ### `redux-app-state`
 
 Ensure the `AppState` Flow type is used on `state` arguments:
