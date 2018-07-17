@@ -51,6 +51,9 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 
 ## Rules
 
+<!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
+<!--DOC_START-->
+
 ### `dangerously-set-inner-html`
 
 Ensure `dangerouslySetInnerHTML` is used on elements that permit flow content:
@@ -65,21 +68,19 @@ Ensure `dangerouslySetInnerHTML` is used on elements that permit flow content:
 
 ### `describe-with-filename`
 
-Ensure the top-level `describe` block has `__filename` as description in a test file:
+Ensure the top-level `describe` block has `__filename` as description:
 
 ```js
 // BAD
-describe('<Component />', () => {
-  // ...
-});
+describe('foo', () => {});
 
 // GOOD
-describe(__filename, () => {
-  // ...
-});
+describe(__filename, () => {});
 ```
 
-This rule is _fixable_ (it changes the description when using `eslint --fix`).
+Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2928.
 
 ### `i18n-no-tagged-templates`
 
@@ -87,15 +88,15 @@ Ensure no template literal tags are passed to i18n methods:
 
 ```js
 // BAD
-i18n.gettext(oneLine`Hello,
-world`);
+i18n.gettext(tag`translated string`);
 
 // GOOD
-i18n.gettext(`Hello,
-world`);
+i18n.gettext('hello');
 ```
 
-This rule is _fixable_ (it removes the tag when using `eslint --fix`).
+Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2108.
 
 ### `one-top-level-describe-per-test`
 
@@ -103,15 +104,17 @@ Ensure there is a single top-level `describe` block per test file:
 
 ```js
 // BAD
-"describe(__filename, () => {
+describe('foo', () => {});
+describe('bar', () => {});
+
+// GOOD
+describe(__filename, () => {
   describe('foo', () => {});
   describe('bar', () => {});
 });
-
-// GOOD
-describe('foo', () => {});
-describe('bar', () => {});
 ```
+
+Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 ### `redux-app-state`
 
@@ -119,11 +122,15 @@ Ensure the `AppState` Flow type is used on `state` arguments:
 
 ```js
 // BAD
-const mapStateToProps = (state: {| user: UserState |}) => {};
+const mapStateToProps = (state: Object) => {};
 
 // GOOD
 const mapStateToProps = (state: AppState) => {};
 ```
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/4058.
+
+<!--DOC_END-->
 
 ## Contributing
 

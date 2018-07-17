@@ -18,14 +18,18 @@ const invalidExample = (code, element) => ({
   ],
 });
 
-ruleTester.run('one-top-level-describe-per-test', rule, {
+const examples = {
   valid: [
+    "describe(__filename, () => {\n  describe('foo', () => {});\n  describe('bar', () => {});\n});",
     "describe('foo', () => {});",
-    "describe('foo', () => { describe('foo 1', () => {}); describe('foo 2', () => {}); });",
     "somethingUnrelated('foo', () => {});",
   ],
 
   invalid: [
-    invalidExample("describe('foo', () => {}); describe('bar', () => {});"),
+    invalidExample("describe('foo', () => {});\ndescribe('bar', () => {});"),
   ],
-});
+};
+
+ruleTester.run('one-top-level-describe-per-test', rule, examples);
+
+module.exports = { examples };

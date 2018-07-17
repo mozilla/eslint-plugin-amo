@@ -24,12 +24,12 @@ const invalidExample = (code, element) => ({
   ],
 });
 
-ruleTester.run('dangerously-set-inner-html', rule, {
+const examples = {
   valid: [
-    '<div />',
     '<div dangerouslySetInnerHTML={sanitizeUserHTML(content)} />',
     '<div dangerouslySetInnerHTML={{__html: "some html"}} />',
     '<div foo="bar" />',
+    '<div />',
   ],
 
   invalid: [
@@ -38,4 +38,8 @@ ruleTester.run('dangerously-set-inner-html', rule, {
       'p'
     ),
   ],
-});
+};
+
+ruleTester.run('dangerously-set-inner-html', rule, examples);
+
+module.exports = { examples };

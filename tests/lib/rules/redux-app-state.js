@@ -16,9 +16,9 @@ const invalidExample = (code) => ({
   ],
 });
 
-ruleTester.run('redux-app-state', rule, {
+const examples = {
   valid: [
-    'const mapStateToProps = (state: AppState) => {}',
+    'const mapStateToProps = (state: AppState) => {};',
     'function mapStateToProps(state: AppState) {}',
     'function mapStateToProps() {}',
     'function mapStateToProps(state) {}',
@@ -27,8 +27,12 @@ ruleTester.run('redux-app-state', rule, {
     'const fn = (foo: string) => {}',
   ],
   invalid: [
-    invalidExample('const mapStateToProps = (state: Object) => {}'),
+    invalidExample('const mapStateToProps = (state: Object) => {};'),
     invalidExample('const mapStateToProps = (state: {| foo: Object |}) => {}'),
     invalidExample('function mapStateToProps(state: Object) {}'),
   ],
-});
+};
+
+ruleTester.run('redux-app-state', rule, examples);
+
+module.exports = { examples };

@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+const replace = require('replace-in-file');
+const requireIndex = require('requireindex');
+
+const allRules = requireIndex(__dirname + '/../lib/rules');
+
+let docSection = '';
+Object.keys(allRules).forEach((ruleId) => {
+  const { meta } = allRules[ruleId];
+  const { docs } = meta;
+
+  const { examples } = require(__dirname + `/../tests/lib/rules/${ruleId}`);
+
+  docSection += `
+### \`${ruleId}\`
+
+${docs.description}:
+
+\`\`\`js
+// BAD
+${examples.invalid[0].code}
+
+// GOOD
+${examples.valid[0]}
+\`\`\`
+`;
+
+  if (meta.fixable) {
+    docSection += `
+Use the ESLint \`--fix\` option on the command line to automatically fixes problems reported by this rule.
+`;
+  }
+
+  if (docs.githubIssue) {
+    docSection += `
+:bulb: We enforce this rule because of the following issue: ${docs.githubIssue}.
+`;
+  }
+});
+
+replace.sync({
+  files: `${__dirname}/../README.md`,
+  from: /(<!--DOC_START-->\n)[\s\S]*(\n<!--DOC_END-->)/,
+  to: `$1${docSection}$2`,
+});

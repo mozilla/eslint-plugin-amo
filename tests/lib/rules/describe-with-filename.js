@@ -18,7 +18,7 @@ const invalidExample = (code, element) => ({
   ],
 });
 
-ruleTester.run('describe-with-filename', rule, {
+const examples = {
   valid: [
     'describe(__filename, () => {});',
     "describe(__filename, () => { describe('foo', () => {}); });",
@@ -39,4 +39,8 @@ ruleTester.run('describe-with-filename', rule, {
       output: "describe(__filename, () => { describe('bar', () => {}); });",
     },
   ],
-});
+};
+
+ruleTester.run('describe-with-filename', rule, examples);
+
+module.exports = { examples };

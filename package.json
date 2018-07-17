@@ -11,10 +11,12 @@
   "license": "MPL-2.0",
   "main": "lib/index.js",
   "scripts": {
+    "doc": "bin/build-doc",
     "prettier": "prettier --write '**'",
     "test": "mocha tests --recursive"
   },
   "dependencies": {
+    "replace-in-file": "^3.4.0",
     "requireindex": "~1.1.0"
   },
   "devDependencies": {

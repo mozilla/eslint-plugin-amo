@@ -24,9 +24,9 @@ const invalidExample = (code) => ({
   ],
 });
 
-ruleTester.run('i18n-no-tagged-templates', rule, {
+const examples = {
   valid: [
-    "i18n.gettext('hello')",
+    "i18n.gettext('hello');",
     'i18n.gettext(`hello`)',
     'i18n.gettext(`hello\n\nworld`)',
     'i18n.dgettext(tag`domain`, `some content`)',
@@ -34,7 +34,7 @@ ruleTester.run('i18n-no-tagged-templates', rule, {
     '<p>{i18n.gettext(`plural`)}</p>',
   ],
   invalid: [
-    invalidExample('i18n.gettext(tag`translated string`)'),
+    invalidExample('i18n.gettext(tag`translated string`);'),
     invalidExample("i18n.dgettext('domain', tag`translated string`)"),
     invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
     invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
@@ -68,4 +68,8 @@ ruleTester.run('i18n-no-tagged-templates', rule, {
       output: '<p>{i18n.ngettext(`singular`, `plural`)}</p>',
     },
   ],
-});
+};
+
+ruleTester.run('i18n-no-tagged-templates', rule, examples);
+
+module.exports = { examples };
