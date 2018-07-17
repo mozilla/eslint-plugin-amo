@@ -1,8 +1,7 @@
 # eslint-plugin-amo
 
 [![Build
-Status](https://travis-ci.org/willdurand/eslint-plugin-amo.svg?branch=master)](https://travis-ci.org/willdurand/eslint-plugin-amo)
-[![npm version](https://badge.fury.io/js/eslint-plugin-amo.svg)](https://badge.fury.io/js/eslint-plugin-amo)
+Status](https://travis-ci.org/willdurand/eslint-plugin-amo.svg?branch=master)](https://travis-ci.org/willdurand/eslint-plugin-amo) [![npm version](https://badge.fury.io/js/eslint-plugin-amo.svg)](https://badge.fury.io/js/eslint-plugin-amo)
 
 ESLint plugin for [AMO](https://wiki.mozilla.org/AMO).
 
