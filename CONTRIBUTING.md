@@ -14,7 +14,7 @@ Before starting, you should read, agree to, and follow these three things:
 
 ### Report Bugs
 
-Report bugs at: https://github.com/willdurand/eslint-plugin-amo/issues/new.
+Report bugs at: https://github.com/mozilla/eslint-plugin-amo/issues/new.
 
 When reporting a bug, please include:
 
@@ -25,7 +25,7 @@ If you are not able to do that, that's fine! Open an issue anyway and let us kno
 
 ### Fix Bugs
 
-Check out the [open bugs](https://github.com/willdurand/eslint-plugin-amo/issues) - anything tagged with the **[easy pick]** label could be a good choice for newcomers (and we are willing to help you).
+Check out the [open bugs](https://github.com/mozilla/eslint-plugin-amo/issues) - anything tagged with the **[easy pick]** label could be a good choice for newcomers (and we are willing to help you).
 
 We have two kind of bugs: **[critical]** and **[bug]**. We tend to fix critical bugs as soon as possible. Feel free to come up with a patch before us though!
 
@@ -39,7 +39,7 @@ If the issue is unclear or you are not sure what is expected, ask for more infor
 
 Any issue with the **[question]** label is open for feedback, so feel free to share your thoughts with us!
 
-The best way to send feedback is to [fill a new issue](https://github.com/willdurand/eslint-plugin-amo/issues/new) on GitHub.
+The best way to send feedback is to [fill a new issue](https://github.com/mozilla/eslint-plugin-amo/issues/new) on GitHub.
 
 If you are proposing a feature:
 
