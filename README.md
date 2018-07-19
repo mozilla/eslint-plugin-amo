@@ -51,7 +51,7 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 
 ## Rules
 
-<!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run doc` -->
+<!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
 
 <!--DOC_START-->
 
@@ -147,13 +147,19 @@ Run the test suite:
 npm test
 ```
 
-New rules can be added with the [ESLint generator for Yeoman](https://github.com/eslint/generator-eslint):
+New rules can be added with the `npm run new-rule` command:
 
 ```
-yo eslint:rule
+npm run new-rule
 ```
 
-Note: we do not use the generated documentation files.
+This command will ask a few questions and generate the source and test files.
+
+The "Rules" documentation section is automatically generated with:
+
+```
+npm run build-doc
+```
 
 For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 

@@ -1,0 +1,144 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const inquirer = require('inquirer');
+const path = require('path');
+
+const RULES_DIR = path.join(__dirname, '..', 'lib/rules');
+const TESTS_DIR = path.join(__dirname, '..', 'tests/lib/rules');
+
+const QUESTIONS = [
+  {
+    name: 'name',
+    type: 'input',
+    message: 'Rule name:',
+    validate: (input) => {
+      if (/^[\w\-]+$/.test(input)) {
+        return true;
+      }
+
+      return 'Rule name may only include letters, numbers and dashes. Example: `my-rule-123`';
+    },
+  },
+  {
+    name: 'description',
+    type: 'input',
+    message: 'Rule description:',
+  },
+  {
+    name: 'category',
+    type: 'list',
+    message: 'Rule category:',
+    choices: ['Flow', 'Possible Errors', 'Stylistic Issues'],
+    default: 1,
+  },
+  {
+    name: 'withGithubIssue',
+    type: 'confirm',
+    message: 'Do you want to reference a GitHub issue?',
+    default: false,
+  },
+  {
+    name: 'githubIssue',
+    type: 'input',
+    message: 'GitHub issue URL:',
+    when: (answers) => answers.withGithubIssue,
+    validate: (input) => {
+      if (/^https:\/\/.+?\/issues\//.test(input)) {
+        return true;
+      }
+
+      return 'This does not look like a GitHub URL.';
+    },
+    filter: (url) => url.trim(),
+  },
+];
+
+const createRule = ({ category, description, githubIssue = null }) => {
+  return `'use strict';
+
+module.exports = {
+  meta: {
+    docs: {
+      category: '${category}',
+      description: '${description}',
+      githubIssue: ${githubIssue ? `'${githubIssue}'` : null},
+      recommended: true,
+    },
+    messages: {
+      error: 'The error message displayed when the rule is violated.',
+    },
+    fixable: null,
+    schema: [],
+  },
+
+  create: (context) => {
+    return {
+      // Your rule here.
+    };
+  },
+};`;
+};
+
+const createTest = ({ name }) => {
+  return `'use strict';
+
+const rule = require('../../../lib/rules/${name}');
+const RuleTester = require('eslint').RuleTester;
+
+const ruleTester = new RuleTester({
+  parserOptions: {
+    ecmaVersion: 6,
+  },
+});
+
+const invalidExample = (code) => ({
+  code,
+  errors: [
+    {
+      messageId: 'error',
+    },
+  ],
+});
+
+const examples = {
+  valid: [
+    // Important: the first code snippet in this list will be used to generate
+    // documentation. Make sure to format it properly with \`\\n\` and indentation.
+    'valid code here',
+  ],
+
+  invalid: [
+    // Important: the first code snippet in this list will be used to generate
+    // documentation. Make sure to format it properly with \`\\n\` and indentation.
+    // In addition, always use the \`invalidExample()\` helper.
+    invalidExample('invalid code here'),
+  ],
+};
+
+ruleTester.run('${name}', rule, examples);
+
+module.exports = { examples };`;
+};
+
+inquirer.prompt(QUESTIONS).then((answers) => {
+  const { name, description, category, githubIssue } = answers;
+  const filename = `${name}.js`;
+
+  fs.writeFileSync(
+    path.join(RULES_DIR, filename),
+    createRule({ description, category, githubIssue }),
+    'utf8'
+  );
+
+  fs.writeFileSync(
+    path.join(TESTS_DIR, filename),
+    createTest({ name }),
+    'utf8'
+  );
+
+  console.log(`\n⚡️ Files for new "${name}" rule created!\n`);
+  console.log(`   Make sure to run \`npm run prettier\` and \`npm run build-doc\`
+   once this rule is implemented and tested. It will format the
+   code and automatically generated the documentation.`);
+});

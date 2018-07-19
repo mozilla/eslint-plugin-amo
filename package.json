@@ -11,7 +11,8 @@
   "license": "MPL-2.0",
   "main": "lib/index.js",
   "scripts": {
-    "doc": "bin/build-doc",
+    "build-doc": "bin/build-doc",
+    "new-rule": "bin/new-rule",
     "prettier": "prettier --write '**'",
     "test": "mocha tests --recursive"
   },
@@ -21,6 +22,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
+    "inquirer": "^6.0.0",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7",
     "replace-in-file": "^3.4.0"
