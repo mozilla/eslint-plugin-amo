@@ -99,6 +99,25 @@ Use the ESLint `--fix` option on the command line to automatically fixes problem
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2108.
 
+### `no-sinon-assert-called-if-called-with`
+
+Ensure `sinon.assert.called()` is absent when `sinon.assert.calledWith()` is used:
+
+```js
+// BAD
+it('description', () => {
+  sinon.assert.called(stub);
+  sinon.assert.calledWith(stub, params);
+});
+
+// GOOD
+it('description', () => {
+  sinon.assert.calledWith(stub, params);
+});
+```
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2437.
+
 ### `one-top-level-describe-per-test`
 
 Ensure there is a single top-level `describe` block per test file:
