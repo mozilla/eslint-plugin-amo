@@ -9,7 +9,7 @@ const ruleTester = new RuleTester({
   },
 });
 
-const invalidExample = (code, element) => ({
+const invalidExample = (code) => ({
   code,
   errors: [
     {
