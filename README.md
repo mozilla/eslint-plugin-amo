@@ -150,6 +150,20 @@ const mapStateToProps = (state: AppState) => {};
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/4058.
 
+### `sort-destructured-props`
+
+Ensure destructured props are sorted:
+
+```js
+// BAD
+const { a, _c, b, Component, ...otherProps } = this.props;
+
+// GOOD
+const { Component, _c, a, b, ...otherProps } = this.props;
+```
+
+Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+
 <!--DOC_END-->
 
 ## Contributing
