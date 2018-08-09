@@ -54,6 +54,14 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 <!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
 
 <!--DOC_START-->
+- [`dangerously-set-inner-html`](#dangerously-set-inner-html)
+- [`describe-with-filename`](#describe-with-filename)
+- [`i18n-no-tagged-templates`](#i18n-no-tagged-templates)
+- [`no-sinon-assert-called-if-called-with`](#no-sinon-assert-called-if-called-with)
+- [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
+- [`redux-app-state`](#redux-app-state)
+- [`sort-destructured-props`](#sort-destructured-props)
+
 
 ### `dangerously-set-inner-html`
 
@@ -79,7 +87,7 @@ describe('foo', () => {});
 describe(__filename, () => {});
 ```
 
-Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2928.
 
@@ -95,7 +103,7 @@ i18n.gettext(tag`translated string`);
 i18n.gettext('hello');
 ```
 
-Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2108.
 
@@ -134,7 +142,7 @@ describe(__filename, () => {
 });
 ```
 
-Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 ### `redux-app-state`
 
@@ -162,7 +170,9 @@ const { a, _c, b, Component, ...otherProps } = this.props;
 const { Component, _c, a, b, ...otherProps } = this.props;
 ```
 
-Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+
+:warning: This rule is not part of the `recommended` preset.
 
 <!--DOC_END-->
 

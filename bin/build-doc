@@ -5,6 +5,13 @@ const requireIndex = require('requireindex');
 const allRules = requireIndex(__dirname + '/../lib/rules');
 
 let docSection = '';
+// First build a Table Of Content
+Object.keys(allRules).forEach((ruleId) => {
+  docSection += `- [\`${ruleId}\`](#${ruleId})\n`;
+});
+docSection += '\n';
+
+// Create a documentation section for each rule.
 Object.keys(allRules).forEach((ruleId) => {
   const { meta } = allRules[ruleId];
   const { docs } = meta;
@@ -27,13 +34,19 @@ ${examples.valid[0]}
 
   if (meta.fixable) {
     docSection += `
-Use the ESLint \`--fix\` option on the command line to automatically fixes problems reported by this rule.
+:wrench: Use the ESLint \`--fix\` option on the command line to automatically fixes problems reported by this rule.
 `;
   }
 
   if (docs.githubIssue) {
     docSection += `
 :bulb: We enforce this rule because of the following issue: ${docs.githubIssue}.
+`;
+  }
+
+  if (!docs.recommended) {
+    docSection += `
+:warning: This rule is not part of the \`recommended\` preset.
 `;
   }
 });
