@@ -54,6 +54,7 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 <!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
 
 <!--DOC_START-->
+
 - [`dangerously-set-inner-html`](#dangerously-set-inner-html)
 - [`describe-with-filename`](#describe-with-filename)
 - [`i18n-no-tagged-templates`](#i18n-no-tagged-templates)
@@ -61,7 +62,7 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 - [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
 - [`redux-app-state`](#redux-app-state)
 - [`sort-destructured-props`](#sort-destructured-props)
-
+- [`with-router-hoc-first`](#with-router-hoc-first)
 
 ### `dangerously-set-inner-html`
 
@@ -173,6 +174,24 @@ const { Component, _c, a, b, ...otherProps } = this.props;
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 :warning: This rule is not part of the `recommended` preset.
+
+### `with-router-hoc-first`
+
+Ensures the `withRouter` HOC is the first in `compose()`:
+
+```js
+// BAD
+compose(
+  connect(mapStateToProps),
+  withRouter
+)(MyComponent);
+
+// GOOD
+compose(
+  withRouter,
+  connect(mapStateToProps)
+)(MyComponent);
+```
 
 <!--DOC_END-->
 
