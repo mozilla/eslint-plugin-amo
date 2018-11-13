@@ -60,6 +60,7 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 - [`i18n-no-tagged-templates`](#i18n-no-tagged-templates)
 - [`no-sinon-assert-called-if-called-with`](#no-sinon-assert-called-if-called-with)
 - [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
+- [`only-log-strings`](#only-log-strings)
 - [`redux-app-state`](#redux-app-state)
 - [`sort-destructured-props`](#sort-destructured-props)
 - [`with-router-hoc-first`](#with-router-hoc-first)
@@ -144,6 +145,22 @@ describe(__filename, () => {
 ```
 
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
+
+### `only-log-strings`
+
+Ensure we do not log full objects:
+
+```js
+// BAD
+log.info('response:', response);
+
+// GOOD
+log.info('this is a log message');
+log.debug(oneLine`A very long string message`);
+_log.warn(`request ID: ${requestId}`);
+```
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/6512.
 
 ### `redux-app-state`
 
