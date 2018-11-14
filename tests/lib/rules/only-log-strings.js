@@ -9,13 +9,14 @@ const ruleTester = new RuleTester({
   },
 });
 
-const invalidExample = (code) => ({
+const invalidExample = (code, options = []) => ({
   code,
   errors: [
     {
       messageId: 'error',
     },
   ],
+  options,
 });
 
 const examples = {
@@ -46,6 +47,8 @@ const examples = {
     invalidExample('this._log.fatal({ some, params }, "in method XYZ");'),
     invalidExample('log.warn(`This is not allowed:`, response)'),
     invalidExample('_log.warn(oneLine`This is not allowed:`, response)'),
+    invalidExample('log.foo({ response })', [{ methods: ['foo'] }]),
+    invalidExample('foo.info({ response })', [{ objects: ['foo'] }]),
   ],
 };
 
