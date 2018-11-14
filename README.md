@@ -160,6 +160,13 @@ log.debug(oneLine`A very long string message`);
 _log.warn(`request ID: ${requestId}`);
 ```
 
+:triangular_ruler: This rule can be configured with the following **options**:
+
+| Name      | Type  | Description                                         |
+| --------- | ----- | --------------------------------------------------- |
+| `methods` | array | A list of logger methods, e.g., `info` or `debug`.  |
+| `objects` | array | A list of logger objects, e.g., `log` or `console`. |
+
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/6512.
 
 ### `redux-app-state`

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const replace = require('replace-in-file');
 const requireIndex = require('requireindex');
+const table = require('markdown-table')
 
 const allRules = requireIndex(__dirname + '/../lib/rules');
 
@@ -31,6 +32,25 @@ ${examples.invalid[0].code}
 ${examples.valid[0]}
 \`\`\`
 `;
+
+  if (meta.schema && meta.schema.length > 0) {
+    const options = [['Name', 'Type', 'Description']].concat(
+      ...meta.schema.map(({ properties }) => {
+        return Object.keys(properties).map((k) => {
+          return [
+            `\`${k}\``,
+            properties[k].type,
+            properties[k].description,
+          ];
+        });
+      }));
+
+    docSection += `
+:triangular_ruler: This rule can be configured with the following **options**:
+
+${table(options)}
+`;
+  }
 
   if (meta.fixable) {
     docSection += `
