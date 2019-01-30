@@ -71,6 +71,7 @@ You can use the `typescript` preset to get reasonable defaults (it includes the 
 - [`no-sinon-assert-called-if-called-with`](#no-sinon-assert-called-if-called-with)
 - [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
 - [`only-log-strings`](#only-log-strings)
+- [`only-tsx-files`](#only-tsx-files)
 - [`redux-app-state`](#redux-app-state)
 - [`sort-destructured-props`](#sort-destructured-props)
 - [`with-router-hoc-first`](#with-router-hoc-first)
@@ -178,6 +179,15 @@ _log.warn(`request ID: ${requestId}`);
 | `objects` | array | A list of logger objects, e.g., `log` or `console`. |
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/6512.
+
+### `only-tsx-files`
+
+Enforce `.tsx` file extensions:
+
+- ⛔️ `src/api/index.ts`
+- ✅ `src/api/index.tsx`
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-code-manager/issues/75.
 
 ### `redux-app-state`
 
