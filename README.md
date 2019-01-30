@@ -49,6 +49,16 @@ Alternatively, you can use the `recommended` preset to get reasonable defaults:
 }
 ```
 
+### TypeScript
+
+You can use the `typescript` preset to get reasonable defaults (it includes the `recommended` rules) as well as TypeScript specific rules:
+
+```json
+{
+  "extends": ["plugin:amo/typescript"]
+}
+```
+
 ## Rules
 
 <!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->

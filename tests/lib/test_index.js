@@ -16,4 +16,10 @@ describe('plugin', () => {
     assert.deepEqual(plugin.configs.recommended.plugins, ['amo']);
     assert.ok(typeof plugin.configs.recommended.rules === 'object');
   });
+
+  it('provides a "typescript" configuration', () => {
+    assert.ok(typeof plugin.configs.typescript === 'object');
+    assert.deepEqual(plugin.configs.typescript.plugins, ['amo']);
+    assert.ok(typeof plugin.configs.recommended.rules === 'object');
+  });
 });
