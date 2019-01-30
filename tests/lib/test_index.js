@@ -12,8 +12,20 @@ describe('plugin', () => {
   });
 
   it('provides a "recommended" configuration', () => {
-    assert.ok(typeof plugin.configs.recommended === 'object');
-    assert.deepEqual(plugin.configs.recommended.plugins, ['amo']);
-    assert.ok(typeof plugin.configs.recommended.rules === 'object');
+    const config = plugin.configs.recommended;
+
+    assert.ok(typeof config === 'object');
+    assert.deepEqual(config.plugins, ['amo']);
+    assert.ok(typeof config.rules === 'object');
+    assert.ok(config.rules['amo/only-tsx-files'] === undefined);
+  });
+
+  it('provides a "typescript" configuration', () => {
+    const config = plugin.configs.typescript;
+
+    assert.ok(typeof config === 'object');
+    assert.deepEqual(config.plugins, ['amo']);
+    assert.ok(typeof config.rules === 'object');
+    assert.ok(config.rules['amo/only-tsx-files'] !== undefined);
   });
 });

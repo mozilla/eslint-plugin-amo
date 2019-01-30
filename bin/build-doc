@@ -23,7 +23,15 @@ Object.keys(allRules).forEach((ruleId) => {
 ### \`${ruleId}\`
 
 ${docs.description}:
+`;
 
+  if (examples.invalid[0].filename) {
+    docSection += `
+- ⛔️ \`${examples.invalid[0].filename}\`
+- ✅ \`${examples.valid[0].filename}\`
+`;
+  } else {
+    docSection += `
 \`\`\`js
 // BAD
 ${examples.invalid[0].code}
@@ -32,6 +40,7 @@ ${examples.invalid[0].code}
 ${examples.valid[0]}
 \`\`\`
 `;
+  }
 
   if (meta.schema && meta.schema.length > 0) {
     const options = [['Name', 'Type', 'Description']].concat(

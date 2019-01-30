@@ -29,7 +29,7 @@ const QUESTIONS = [
     name: 'category',
     type: 'list',
     message: 'Rule category:',
-    choices: ['Flow', 'Possible Errors', 'Stylistic Issues'],
+    choices: ['Flow', 'Possible Errors', 'Stylistic Issues', 'TypeScript'],
     default: 1,
   },
   {
@@ -63,7 +63,7 @@ module.exports = {
       category: '${category}',
       description: '${description}',
       githubIssue: ${githubIssue ? `'${githubIssue}'` : null},
-      recommended: true,
+      recommended: true,${category === 'TypeScript' ? '\n      typescript: true,' : ''}
     },
     messages: {
       error: 'The error message displayed when the rule is violated.',

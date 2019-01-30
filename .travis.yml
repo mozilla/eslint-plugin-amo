@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - "6"
   - "8"
+  - "10"
   - "lts/*"
 
 jobs:
   include:
     - stage: npm release
       if: tag IS present
-      node_js: "8"
+      node_js: "10"
       deploy:
         provider: npm
         email: "$NPM_EMAIL"
