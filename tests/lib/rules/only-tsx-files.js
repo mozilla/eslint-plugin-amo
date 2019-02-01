@@ -29,6 +29,10 @@ const examples = {
       code: '// some code',
       filename: 'src/Foo.tsx',
     },
+    {
+      code: '// some code',
+      filename: 'src/@types/lib/index.d.ts',
+    },
   ],
   invalid: [
     invalidExample('// some code', 'src/api/index.ts'),
