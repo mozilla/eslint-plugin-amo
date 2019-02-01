@@ -182,7 +182,7 @@ _log.warn(`request ID: ${requestId}`);
 
 ### `only-tsx-files`
 
-Enforce `.tsx` file extensions:
+Enforce `.tsx` file extensions (definition files are ignored by this rule):
 
 - ⛔️ `src/api/index.ts`
 - ✅ `src/api/index.tsx`
