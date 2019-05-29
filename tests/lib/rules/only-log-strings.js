@@ -34,6 +34,7 @@ const examples = {
     'log.info();',
     'log.info(`This is allowed: ${request.url}`);',
     'props.log.debug(oneLine`This is allowed: ${request.url}`);',
+    'stderr.debug(oneLine(`foo = ${foo} and bar = ${bar}`))',
   ],
 
   invalid: [
