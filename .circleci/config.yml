@@ -78,7 +78,8 @@ jobs:
           at: ~/eslint-plugin-amo
       - run:
           name: authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/eslint-plugin-amo/.npmrc
+          # We don't want to expand the token in this file, npm will do it.
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/eslint-plugin-amo/.npmrc
       - run:
           name: publish package
           command: npm publish
