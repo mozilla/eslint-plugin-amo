@@ -224,16 +224,10 @@ Ensures the `withRouter` HOC is the first in `compose()`:
 
 ```js
 // BAD
-compose(
-  connect(mapStateToProps),
-  withRouter
-)(MyComponent);
+compose(connect(mapStateToProps), withRouter)(MyComponent);
 
 // GOOD
-compose(
-  withRouter,
-  connect(mapStateToProps)
-)(MyComponent);
+compose(withRouter, connect(mapStateToProps))(MyComponent);
 ```
 
 <!--DOC_END-->
