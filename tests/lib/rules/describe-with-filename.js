@@ -9,15 +9,6 @@ const ruleTester = new RuleTester({
   },
 });
 
-const invalidExample = (code) => ({
-  code,
-  errors: [
-    {
-      messageId: 'invalidDescription',
-    },
-  ],
-});
-
 const examples = {
   valid: [
     'describe(__filename, () => {});',
@@ -25,9 +16,6 @@ const examples = {
   ],
 
   invalid: [
-    invalidExample("describe('foo', () => {});"),
-    invalidExample("describe('foo', () => { describe('bar', () => {}); });"),
-    // tests with `--fix`
     {
       code: "describe('foo', () => {});",
       errors: [{ messageId: 'invalidDescription' }],
