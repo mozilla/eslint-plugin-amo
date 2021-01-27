@@ -154,8 +154,6 @@ describe(__filename, () => {
 });
 ```
 
-:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
-
 ### `only-log-strings`
 
 Ensure we do not log full objects:

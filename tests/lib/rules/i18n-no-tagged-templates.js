@@ -12,18 +12,6 @@ const ruleTester = new RuleTester({
   },
 });
 
-const invalidExample = (code) => ({
-  code,
-  errors: [
-    {
-      messageId: 'noTemplateLiteralTags',
-      data: {
-        tag: 'tag',
-      },
-    },
-  ],
-});
-
 const examples = {
   valid: [
     "i18n.gettext('hello');",
@@ -34,13 +22,21 @@ const examples = {
     '<p>{i18n.gettext(`plural`)}</p>',
   ],
   invalid: [
-    invalidExample('i18n.gettext(tag`translated string`);'),
-    invalidExample("i18n.dgettext('domain', tag`translated string`)"),
-    invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
-    invalidExample("i18n.dcgettext('domain', tag`translated string`)"),
-    invalidExample("i18n.ngettext('singular', tag`plural`)"),
-    invalidExample("i18n.dngettext('domain', 'singular', tag`plural`)"),
-    invalidExample("i18n.dngettext('domain', tag`singular`, `plural`)"),
+    {
+      code: 'i18n.gettext(tag`translated string`)',
+      errors: [{ messageId: 'noTemplateLiteralTags', data: { tag: 'tag' } }],
+      output: 'i18n.gettext(`translated string`)',
+    },
+    ...['dgettext', 'dcgettext'].map((method) => ({
+      code: `i18n.${method}('domain', tag\`translated string\`)`,
+      errors: [{ messageId: 'noTemplateLiteralTags', data: { tag: 'tag' } }],
+      output: `i18n.${method}('domain', \`translated string\`)`,
+    })),
+    {
+      code: '<p>{i18n.gettext(tag`translated string`)}</p>',
+      errors: [{ messageId: 'noTemplateLiteralTags', data: { tag: 'tag' } }],
+      output: '<p>{i18n.gettext(`translated string`)}</p>',
+    },
     // test with multiple tags
     {
       code: "i18n.dngettext('domain', someTag`singular`, someTag`plural`)",
@@ -48,8 +44,8 @@ const examples = {
         { messageId: 'noTemplateLiteralTags', data: { tag: 'someTag' } },
         { messageId: 'noTemplateLiteralTags', data: { tag: 'someTag' } },
       ],
+      output: "i18n.dngettext('domain', `singular`, `plural`)",
     },
-    invalidExample('<p>{i18n.gettext(tag`translated string`)}</p>'),
     // test with `--fix`
     {
       code: '<p>{i18n.gettext(tagToRemove`translated string`)}</p>',
