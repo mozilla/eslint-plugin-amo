@@ -30,6 +30,6 @@
     "replace-in-file": "^6.0.0"
   },
   "engines": {
-    "node": ">= 6.x"
+    "node": ">= 12.x"
   }
 }
