@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.0",
-    "eslint": "^7.23.0",
+    "eslint": "^8.0.0",
     "inquirer": "^8.0.0",
     "markdown-table": "^3.0.0",
     "mocha": "^9.0.0",
