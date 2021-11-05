@@ -4,7 +4,13 @@ const rule = require('../../../lib/rules/redux-app-state');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: ['@babel/plugin-syntax-flow'],
+    },
+  },
 });
 
 const invalidExample = (code) => ({
