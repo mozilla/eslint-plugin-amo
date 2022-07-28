@@ -8,7 +8,7 @@ references:
     working_directory: ~/eslint-plugin-amo
     docker:
       # This is the NodeJS version we run in production.
-      - image: cimg/node:14.19
+      - image: cimg/node:14.20
 
   defaults-next: &defaults-next
     working_directory: ~/eslint-plugin-amo
