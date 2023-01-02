@@ -269,3 +269,4 @@ For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) fil
 ## License
 
 eslint-plugin-amo is released under the Mozilla Public License Version 2.0. See the bundled [LICENSE](./LICENSE.txt) file for details.
+test
