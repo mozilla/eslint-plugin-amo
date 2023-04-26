@@ -20,12 +20,18 @@ const examples = {
     'i18n.dgettext(tag`domain`, `some content`)',
     "i18n.ngettext('singular', `plural`)",
     '<p>{i18n.gettext(`plural`)}</p>',
+    "i18n._('hello');",
   ],
   invalid: [
     {
       code: 'i18n.gettext(tag`translated string`)',
       errors: [{ messageId: 'noTemplateLiteralTags', data: { tag: 'tag' } }],
       output: 'i18n.gettext(`translated string`)',
+    },
+    {
+      code: 'i18n._(tag`translated string`)',
+      errors: [{ messageId: 'noTemplateLiteralTags', data: { tag: 'tag' } }],
+      output: 'i18n._(`translated string`)',
     },
     ...['dgettext', 'dcgettext'].map((method) => ({
       code: `i18n.${method}('domain', tag\`translated string\`)`,
