@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const replace = require('replace-in-file');
 const requireIndex = require('requireindex');
-const table = require('markdown-table')
 
 const allRules = requireIndex(__dirname + '/../lib/rules');
 
@@ -12,26 +11,27 @@ Object.keys(allRules).forEach((ruleId) => {
 });
 docSection += '\n';
 
-// Create a documentation section for each rule.
-Object.keys(allRules).forEach((ruleId) => {
-  const { meta } = allRules[ruleId];
-  const { docs } = meta;
+import("markdown-table").then(({ markdownTable }) => {
+  // Create a documentation section for each rule.
+  Object.keys(allRules).forEach((ruleId) => {
+    const { meta } = allRules[ruleId];
+    const { docs } = meta;
 
-  const { examples } = require(__dirname + `/../tests/lib/rules/${ruleId}`);
+    const { examples } = require(__dirname + `/../tests/lib/rules/${ruleId}`);
 
-  docSection += `
+    docSection += `
 ### \`${ruleId}\`
 
 ${docs.description}:
 `;
 
-  if (examples.invalid[0].filename) {
-    docSection += `
+    if (examples.invalid[0].filename) {
+      docSection += `
 - ⛔️ \`${examples.invalid[0].filename}\`
 - ✅ \`${examples.valid[0].filename}\`
 `;
-  } else {
-    docSection += `
+    } else {
+      docSection += `
 \`\`\`js
 // BAD
 ${examples.invalid[0].code}
@@ -40,48 +40,49 @@ ${examples.invalid[0].code}
 ${examples.valid[0]}
 \`\`\`
 `;
-  }
+    }
 
-  if (meta.schema && meta.schema.length > 0) {
-    const options = [['Name', 'Type', 'Description']].concat(
-      ...meta.schema.map(({ properties }) => {
-        return Object.keys(properties).map((k) => {
-          return [
-            `\`${k}\``,
-            properties[k].type,
-            properties[k].description,
-          ];
-        });
-      }));
+    if (meta.schema && meta.schema.length > 0) {
+      const options = [['Name', 'Type', 'Description']].concat(
+        ...meta.schema.map(({ properties }) => {
+          return Object.keys(properties).map((k) => {
+            return [
+              `\`${k}\``,
+              properties[k].type,
+              properties[k].description,
+            ];
+          });
+        }));
 
-    docSection += `
+      docSection += `
 :triangular_ruler: This rule can be configured with the following **options**:
 
-${table(options)}
+${markdownTable(options)}
 `;
   }
 
-  if (meta.fixable) {
-    docSection += `
+    if (meta.fixable) {
+      docSection += `
 :wrench: Use the ESLint \`--fix\` option on the command line to automatically fixes problems reported by this rule.
 `;
-  }
+    }
 
-  if (docs.githubIssue) {
-    docSection += `
+    if (docs.githubIssue) {
+      docSection += `
 :bulb: We enforce this rule because of the following issue: ${docs.githubIssue}.
 `;
-  }
+    }
 
-  if (!docs.recommended) {
-    docSection += `
+    if (!docs.recommended) {
+      docSection += `
 :warning: This rule is not part of the \`recommended\` preset.
 `;
-  }
-});
+    }
+  });
 
-replace.sync({
-  files: `${__dirname}/../README.md`,
-  from: /(<!--DOC_START-->\n)[\s\S]*(\n<!--DOC_END-->)/,
-  to: `$1${docSection}$2`,
+  replace.sync({
+    files: `${__dirname}/../README.md`,
+    from: /(<!--DOC_START-->\n)[\s\S]*(\n<!--DOC_END-->)/,
+    to: `$1${docSection}$2`,
+  });
 });
