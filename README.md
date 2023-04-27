@@ -66,6 +66,7 @@ You can use the `typescript` preset to get reasonable defaults (it includes the 
 
 - [`dangerously-set-inner-html`](#dangerously-set-inner-html)
 - [`describe-with-filename`](#describe-with-filename)
+- [`i18n-no-interpolated-values`](#i18n-no-interpolated-values)
 - [`i18n-no-tagged-templates`](#i18n-no-tagged-templates)
 - [`no-sinon-assert-called-if-called-with`](#no-sinon-assert-called-if-called-with)
 - [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
@@ -102,6 +103,18 @@ describe(__filename, () => {});
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2928.
+
+### `i18n-no-interpolated-values`
+
+Ensure no interpolated values are passed to i18n methods:
+
+```js
+// BAD
+i18n.gettext(`some ${value}`);
+
+// GOOD
+i18n.gettext(`some %(value)s`);
+```
 
 ### `i18n-no-tagged-templates`
 
