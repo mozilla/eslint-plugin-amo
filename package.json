@@ -29,7 +29,7 @@
     "markdown-table": "^3.0.0",
     "mocha": "^10.0.0",
     "prettier": "^2.0.0",
-    "replace-in-file": "^6.0.0"
+    "replace-in-file": "^7.0.1"
   },
   "engines": {
     "node": ">= 12.x"
