@@ -63,7 +63,6 @@ You can use the `typescript` preset to get reasonable defaults (it includes the 
 <!-- THIS SECTION IS AUTOMATICALLY GENERATED, PLEASE RUN: `npm run build-doc` -->
 
 <!--DOC_START-->
-
 - [`dangerously-set-inner-html`](#dangerously-set-inner-html)
 - [`describe-with-filename`](#describe-with-filename)
 - [`i18n-no-interpolated-values`](#i18n-no-interpolated-values)
@@ -75,6 +74,7 @@ You can use the `typescript` preset to get reasonable defaults (it includes the 
 - [`redux-app-state`](#redux-app-state)
 - [`sort-destructured-props`](#sort-destructured-props)
 - [`with-router-hoc-first`](#with-router-hoc-first)
+
 
 ### `dangerously-set-inner-html`
 
@@ -110,10 +110,10 @@ Ensure no interpolated values are passed to i18n methods:
 
 ```js
 // BAD
-i18n.gettext(`some ${value}`);
+i18n.gettext(`some ${value}`)
 
 // GOOD
-i18n.gettext(`some %(value)s`);
+i18n.gettext(`some %(value)s`)
 ```
 
 ### `i18n-no-tagged-templates`
@@ -122,10 +122,10 @@ Ensure no template literal tags are passed to i18n methods:
 
 ```js
 // BAD
-i18n.gettext(tag`translated string`);
+i18n.gettext(tag`translated string`)
 
 // GOOD
-i18n.gettext('hello');
+i18n.gettext('hello')
 ```
 
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
@@ -173,10 +173,10 @@ Ensure we do not log full objects:
 
 ```js
 // BAD
-log.info('response:', response);
+log.info("response:", response);
 
 // GOOD
-log.info('this is a log message');
+log.info("this is a log message");
 log.debug(oneLine`A very long string message`);
 _log.warn(`request ID: ${requestId}`);
 ```
@@ -235,10 +235,16 @@ Ensures the `withRouter` HOC is the first in `compose()`:
 
 ```js
 // BAD
-compose(connect(mapStateToProps), withRouter)(MyComponent);
+compose(
+  connect(mapStateToProps),
+  withRouter
+)(MyComponent)
 
 // GOOD
-compose(withRouter, connect(mapStateToProps))(MyComponent);
+compose(
+  withRouter,
+  connect(mapStateToProps)
+)(MyComponent)
 ```
 
 <!--DOC_END-->

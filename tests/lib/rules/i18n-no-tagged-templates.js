@@ -14,7 +14,7 @@ const ruleTester = new RuleTester({
 
 const examples = {
   valid: [
-    "i18n.gettext('hello');",
+    "i18n.gettext('hello')",
     'i18n.gettext(`hello`)',
     'i18n.gettext(`hello\n\nworld`)',
     'i18n.dgettext(tag`domain`, `some content`)',
