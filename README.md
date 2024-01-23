@@ -66,7 +66,9 @@ You can use the `typescript` preset to get reasonable defaults (it includes the 
 - [`dangerously-set-inner-html`](#dangerously-set-inner-html)
 - [`describe-with-filename`](#describe-with-filename)
 - [`i18n-no-interpolated-values`](#i18n-no-interpolated-values)
+- [`i18n-no-reference`](#i18n-no-reference)
 - [`i18n-no-tagged-templates`](#i18n-no-tagged-templates)
+- [`i18n-no-template-literal`](#i18n-no-template-literal)
 - [`no-sinon-assert-called-if-called-with`](#no-sinon-assert-called-if-called-with)
 - [`one-top-level-describe-per-test`](#one-top-level-describe-per-test)
 - [`only-log-strings`](#only-log-strings)
@@ -116,6 +118,20 @@ i18n.gettext(`some ${value}`)
 i18n.gettext(`some %(value)s`)
 ```
 
+### `i18n-no-reference`
+
+Ensure predictable static values are passed as i18n method arguments:
+
+```js
+// BAD
+i18n.gettext(hello)
+
+// GOOD
+i18n.gettext('hello')
+```
+
+:bulb: We enforce this rule because of the following issue: https://github.com/mozilla/eslint-plugin-amo/issues/232.
+
 ### `i18n-no-tagged-templates`
 
 Ensure no template literal tags are passed to i18n methods:
@@ -131,6 +147,22 @@ i18n.gettext('hello')
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/addons-frontend/issues/2108.
+
+### `i18n-no-template-literal`
+
+Ensure predictable static values are passed as i18n method arguments:
+
+```js
+// BAD
+i18n.gettext(`
+
+hello`)
+
+// GOOD
+i18n.gettext('hello')
+```
+
+:wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
 ### `no-sinon-assert-called-if-called-with`
 
