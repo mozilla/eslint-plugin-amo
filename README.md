@@ -132,6 +132,8 @@ i18n.gettext('hello')
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/eslint-plugin-amo/issues/232.
 
+:warning: This rule is not part of the `recommended` preset.
+
 ### `i18n-no-tagged-templates`
 
 Ensure no template literal tags are passed to i18n methods:
