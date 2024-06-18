@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-amo",
-  "version": "1.25.1",
+  "version": "1.25.2",
   "description": "ESLint plugin for AMO",
   "keywords": [
     "eslint",
