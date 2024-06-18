@@ -164,6 +164,8 @@ i18n.gettext('hello')
 
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.
 
+:warning: This rule is not part of the `recommended` preset.
+
 ### `no-sinon-assert-called-if-called-with`
 
 Ensure `sinon.assert.called()` is absent when `sinon.assert.calledWith()` is used:
