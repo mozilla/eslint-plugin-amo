@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const inquirer = require('inquirer');
+const inquirer = require('inquirer').default;
 const path = require('path');
 
 const RULES_DIR = path.join(__dirname, '..', 'lib/rules');
