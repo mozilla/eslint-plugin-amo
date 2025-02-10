@@ -1,14 +1,17 @@
 'use strict';
 
 const rule = require('../../../lib/rules/redux-app-state');
+const babelParser = require('@babel/eslint-parser');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parser: require.resolve('@babel/eslint-parser'),
-  parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: ['@babel/plugin-syntax-flow'],
+  languageOptions: {
+    parser: babelParser,
+    parserOptions: {
+      requireConfigFile: false,
+      babelOptions: {
+        plugins: ['@babel/plugin-syntax-flow'],
+      },
     },
   },
 });

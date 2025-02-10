@@ -4,8 +4,10 @@ const rule = require('../../../lib/rules/no-sinon-assert-called-if-called-with')
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 6,
+    },
   },
 });
 
