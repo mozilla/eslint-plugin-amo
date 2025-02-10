@@ -4,8 +4,10 @@ const rule = require('../../../lib/rules/sort-destructured-props');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 2018,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 2018,
+    },
   },
 });
 

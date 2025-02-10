@@ -7,10 +7,12 @@ const { I18N_METHODS } = require('../../../lib/i18n');
 const { getI18nValidCases, getI18nInvalidCases } = require('../../utils');
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
-    ecmaFeatures: {
-      jsx: true,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 6,
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 });
@@ -31,7 +33,7 @@ const invalidNoRefInputs = [
 
 const examples = {
   valid: [
-    "i18n.gettext('hello')",
+    "i18n.gettext('hallo')",
     ...getI18nValidCases(methods, [
       "'hello'",
       '"hello"',

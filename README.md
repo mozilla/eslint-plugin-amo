@@ -127,7 +127,7 @@ Ensure predictable static values are passed as i18n method arguments:
 i18n.gettext(hello)
 
 // GOOD
-i18n.gettext('hello')
+i18n.gettext('hallo')
 ```
 
 :bulb: We enforce this rule because of the following issue: https://github.com/mozilla/eslint-plugin-amo/issues/232.
@@ -161,7 +161,7 @@ i18n.gettext(`
 hello`)
 
 // GOOD
-i18n.gettext('hello')
+i18n.gettext('hallo')
 ```
 
 :wrench: Use the ESLint `--fix` option on the command line to automatically fixes problems reported by this rule.

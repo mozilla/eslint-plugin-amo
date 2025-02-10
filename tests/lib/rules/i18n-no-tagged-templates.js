@@ -4,10 +4,12 @@ const rule = require('../../../lib/rules/i18n-no-tagged-templates');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
-    ecmaFeatures: {
-      jsx: true,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 6,
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 });

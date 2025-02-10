@@ -4,8 +4,10 @@ const rule = require('../../../lib/rules/describe-with-filename');
 const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 6,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 6,
+    },
   },
 });
 
