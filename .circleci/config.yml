@@ -71,6 +71,15 @@ jobs:
       - *save_next_build_cache
       - run: npm test
 
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_build_cache
+      - *run_npm_install
+      - *save_build_cache
+      - run: npm run lint
+
   release-tag:
     <<: *defaults
     steps:
@@ -93,9 +102,11 @@ workflows:
             tags:
               only: /.*/
       - test-next
+      - lint
       - release-tag:
           requires:
             - test
+            - lint
           filters:
             tags:
               only: /.*/
