@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const replace = require('replace-in-file');
+const { replaceInFileSync } = require('replace-in-file');
 const requireIndex = require('requireindex');
 
 const allRules = requireIndex(__dirname + '/../lib/rules');
@@ -80,7 +80,7 @@ ${markdownTable(options)}
     }
   });
 
-  replace.sync({
+  replaceInFileSync({
     files: `${__dirname}/../README.md`,
     from: /(<!--DOC_START-->\n)[\s\S]*(\n<!--DOC_END-->)/,
     to: `$1${docSection}$2`,
