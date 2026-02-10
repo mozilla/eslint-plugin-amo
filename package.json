@@ -24,7 +24,7 @@
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.0",
     "@babel/plugin-syntax-flow": "^7.16.0",
-    "eslint": "^9.0.0",
+    "eslint": "^10.0.0",
     "inquirer": "^13.0.1",
     "markdown-table": "^3.0.0",
     "mocha": "^11.0.1",
