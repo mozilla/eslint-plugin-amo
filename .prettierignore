@@ -3,6 +3,8 @@
 # exclude these directories
 /bin/
 /node_modules/
-# white-list files we want to process
+# exclude these files
+/CODEOWNERS
+# allow-list files we want to process
 !*.js
 !*.md
