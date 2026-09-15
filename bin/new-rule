@@ -27,7 +27,7 @@ const QUESTIONS = [
   },
   {
     name: 'category',
-    type: 'list',
+    type: 'rawlist',
     message: 'Rule category:',
     choices: ['Flow', 'Possible Errors', 'Stylistic Issues', 'TypeScript'],
     default: 1,
