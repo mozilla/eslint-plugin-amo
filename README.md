@@ -315,6 +315,12 @@ npm run build-doc
 
 For further information, please see the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
+## Versioning
+
+This project follows the [semantic versioning](https://semver.org/) specification. To release a new version of this library on npmjs.org, please see [our release process][].
+
 ## License
 
 eslint-plugin-amo is released under the Mozilla Public License Version 2.0. See the bundled [LICENSE](./LICENSE.txt) file for details.
+
+[our release process]: https://github.com/mozilla/addons/tree/1.1/.github/actions/release#release-process
