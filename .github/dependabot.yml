@@ -16,6 +16,13 @@ updates:
       - dependency-name: eslint
         versions:
           - ">= 10"
+    allow:
+      - dependency-type: "development"
+        update-types:
+          # Let's ignore "semver-patch" releases for dev dependencies to reduce
+          # the amount of PRs we get every day.
+          - "version-update:semver-minor"
+          - "version-update:semver-major"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
